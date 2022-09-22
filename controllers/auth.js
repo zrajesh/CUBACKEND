@@ -128,6 +128,50 @@ exports.getAluminis = (req, res) => {
     });
 }
 
+exports.getAluminisByRegNo = (req, res) => {
+    Alumini.find({'regNo': req.params.regNo},(err, aluminis) => {
+        if(err || !aluminis) {
+            return res.status(400).json({
+                err: "Aluminis not found"
+            })
+        }
+        res.json(aluminis);
+    });
+}
+
+exports.getAluminisByDomain = (req, res) => {
+    Alumini.find({'domain': req.params.domain},(err, aluminis) => {
+        if(err || !aluminis) {
+            return res.status(400).json({
+                err: "Aluminis not found"
+            })
+        }
+        res.json(aluminis);
+    });
+}
+
+exports.getAluminisByGender = (req, res) => {
+    Alumini.find({'gender': req.params.gender},(err, aluminis) => {
+        if(err || !aluminis) {
+            return res.status(400).json({
+                err: "Aluminis not found"
+            })
+        }
+        res.json(aluminis);
+    });
+}
+
+exports.getAluminisByAuth = (req, res) => {
+    Alumini.find({'aluminiVerify': req.params.auth},(err, aluminis) => {
+        if(err || !aluminis) {
+            return res.status(400).json({
+                err: "Aluminis not found"
+            })
+        }
+        res.json(aluminis);
+    });
+}
+
 // MSDE
 exports.signUpMsde = (req, res) => {
     const msde = new Msde(req.body);
